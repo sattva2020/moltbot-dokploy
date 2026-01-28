@@ -1,7 +1,7 @@
 FROM node:24-bookworm
 
 # Install moltbot from npm (stable)
-RUN npm install -g moltbot@latest
+RUN npm install -g clawdbot@latest
 
 # Run as non-root and keep config in /home
 ENV HOME=/home/nodeuser
