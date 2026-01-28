@@ -1,14 +1,14 @@
-FROM node:22-bookworm
+FROM node:24-bookworm
 
 # Install moltbot from npm (stable)
 RUN npm install -g moltbot@latest
 
 # Run as non-root and keep config in /home
-ENV HOME=/home/node
-RUN useradd -m nodeuser
+ENV HOME=/home/nodeuser
 USER nodeuser
-WORKDIR /home/node
+WORKDIR /home/nodeuser
 
 EXPOSE 18789
 
-CMD ["moltbot","gateway","--port","18789","--verbose","--allow-unconfigured"]
+CMD ["sh","-lc","moltbot gateway --port ${CLAWDBOT_GATEWAY_PORT:-18789} --verbose --allow-unconfigured"]
+
